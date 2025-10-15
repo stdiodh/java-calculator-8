@@ -1,7 +1,7 @@
 package calculator.domain;
 
 public class StringCalculator {
-    public String[] split(String text) {
+    public String[] parse(String text) {
         if (text == null || text.isEmpty()) {
             return new String[0];
         }

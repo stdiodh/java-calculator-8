@@ -13,7 +13,7 @@ public class Application {
         String userInput = inputView.getUserInput();
 
         StringCalculator calculator = new StringCalculator();
-        String[] parseInput = calculator.split(userInput);
+        String[] parseInput = calculator.parse(userInput);
 
         //TODO: 입력 검증 (예외 처리)
     }
