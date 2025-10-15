@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.domain.StringCalculator;
 import calculator.view.InputView;
 import calculator.view.OutputView;
 
@@ -11,7 +12,9 @@ public class Application {
         outputView.printInputPrompt();
         String userInput = inputView.getUserInput();
 
-        System.out.println(userInput);
-        //TODO: 문자열 분리 및 파싱
+        StringCalculator calculator = new StringCalculator();
+        String[] parseInput = calculator.split(userInput);
+
+        //TODO: 입력 검증 (예외 처리)
     }
 }
