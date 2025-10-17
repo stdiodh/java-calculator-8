@@ -1,6 +1,9 @@
 package calculator;
 
+import calculator.domain.Expression;
+import calculator.domain.Numbers;
 import calculator.domain.StringCalculator;
+import calculator.domain.Tokens;
 import calculator.view.InputView;
 import calculator.view.OutputView;
 
@@ -10,15 +13,15 @@ public class Application {
         InputView inputView = new InputView();
 
         outputView.printInputPrompt();
-        String userInput = inputView.getUserInput();
+        Expression userInput = new Expression(inputView.getUserInput());
 
         StringCalculator calculator = new StringCalculator();
-        String[] parseInput = calculator.parse(userInput);
+        Tokens parseInput = calculator.parse(userInput);
 
         //TODO: 입력 검증 (예외 처리)
 
-        int[] numbers = calculator.toInts(parseInput);
-        int result = calculator.sum(numbers);
+        Numbers numbers = new Numbers(parseInput);
+        int result = numbers.sum();
 
         outputView.printOutputPrompt(result);
     }

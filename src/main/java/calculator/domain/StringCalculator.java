@@ -1,16 +1,17 @@
 package calculator.domain;
 
 public class StringCalculator {
-    public String[] parse(String text) {
+    public Tokens parse(Expression expression) {
+        String text = expression.getValue();
         if (text == null || text.isEmpty()) {
-            return new String[0];
+            return new Tokens(new String[0]);
         }
 
         if (text.startsWith("//") && text.contains("\n")) {
-            return splitByCustomSeparator(text);
+            return new Tokens(splitByCustomSeparator(text));
         }
 
-        return splitByDefaultSeparator(text);
+        return new Tokens(splitByDefaultSeparator(text));
     }
 
     public String[] splitByDefaultSeparator(String text) {
@@ -29,22 +30,5 @@ public class StringCalculator {
         String textToSplit = text.substring(endIndex + 1);
 
         return textToSplit.split(customSeparator);
-    }
-
-    public int[] toInts(String[] parseText) {
-        int length = parseText.length;
-        int[] numbers = new int[length];
-        for (int i = 0; i < length; i++) {
-            numbers[i] = Integer.parseInt(parseText[i]);
-        }
-        return numbers;
-    }
-
-    public int sum(int[] numbers) {
-        int result = 0;
-        for (int number : numbers) {
-            result += number;
-        }
-        return result;
     }
 }
