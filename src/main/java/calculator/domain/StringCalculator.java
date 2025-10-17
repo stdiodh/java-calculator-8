@@ -30,4 +30,21 @@ public class StringCalculator {
 
         return textToSplit.split(customSeparator);
     }
+
+    public int[] toInts(String[] parseText) {
+        int length = parseText.length;
+        int[] numbers = new int[length];
+        for (int i = 0; i < length; i++) {
+            numbers[i] = Integer.parseInt(parseText[i]);
+        }
+        return numbers;
+    }
+
+    public int sum(int[] numbers) {
+        int result = 0;
+        for (int number : numbers) {
+            result += number;
+        }
+        return result;
+    }
 }

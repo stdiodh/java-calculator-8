@@ -16,5 +16,10 @@ public class Application {
         String[] parseInput = calculator.parse(userInput);
 
         //TODO: 입력 검증 (예외 처리)
+
+        int[] numbers = calculator.toInts(parseInput);
+        int result = calculator.sum(numbers);
+
+        outputView.printOutputPrompt(result);
     }
 }
