@@ -1,5 +1,7 @@
 package calculator.domain;
 
+import java.util.regex.Pattern;
+
 public class Tokenizer {
     public Tokens parse(Expression expression) {
         String text = expression.getValue();
@@ -7,7 +9,7 @@ public class Tokenizer {
             return new Tokens(new String[0]);
         }
 
-        if (text.startsWith("//") && text.contains("\n")) {
+        if (text.startsWith("//") && text.contains("\\n")) {
             return new Tokens(splitByCustomSeparator(text));
         }
 
@@ -20,15 +22,15 @@ public class Tokenizer {
 
     private String[] splitByCustomSeparator(String text) {
         final String CUSTOM_SEPARATOR_START = "//";
-        final String CUSTOM_SEPARATOR_END = "\n";
+        final String CUSTOM_SEPARATOR_END = "\\n";
 
         int startIndex = CUSTOM_SEPARATOR_START.length();
         int endIndex = text.indexOf(CUSTOM_SEPARATOR_END);
 
         String customSeparator = text.substring(startIndex, endIndex);
 
-        String textToSplit = text.substring(endIndex + 1);
+        String textToSplit = text.substring(endIndex + CUSTOM_SEPARATOR_END.length());
 
-        return textToSplit.split(customSeparator);
+        return textToSplit.split(Pattern.quote(customSeparator));
     }
 }
