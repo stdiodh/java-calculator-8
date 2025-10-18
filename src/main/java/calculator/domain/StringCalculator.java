@@ -14,11 +14,11 @@ public class StringCalculator {
         return new Tokens(splitByDefaultSeparator(text));
     }
 
-    public String[] splitByDefaultSeparator(String text) {
-        return text.split(",|:");
+    private String[] splitByDefaultSeparator(String text) {
+        return text.split("[,:]]");
     }
 
-    public String[] splitByCustomSeparator(String text) {
+    private String[] splitByCustomSeparator(String text) {
         final String CUSTOM_SEPARATOR_START = "//";
         final String CUSTOM_SEPARATOR_END = "\n";
 
