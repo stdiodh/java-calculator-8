@@ -11,4 +11,8 @@ public class OutputView {
     public void printOutputPrompt(int result) {
         System.out.println(OUTPUT_PROMPT_MESSAGE + result);
     }
+
+    public void printError(IllegalArgumentException e) {
+        System.out.println(e.getMessage());
+    }
 }
