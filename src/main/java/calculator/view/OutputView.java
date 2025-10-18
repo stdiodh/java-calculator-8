@@ -8,7 +8,7 @@ public class OutputView {
         System.out.println(INPUT_PROMPT_MESSAGE);
     }
 
-    public void printOutputPrompt(int result) {
+    public void printResult(int result) {
         System.out.println(OUTPUT_PROMPT_MESSAGE + result);
     }
 

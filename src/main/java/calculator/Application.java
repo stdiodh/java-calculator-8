@@ -32,7 +32,7 @@ public class Application {
         Numbers numbers = new Numbers(parseInput);
 
         int result = numbers.sum();
-        outputView.printOutputPrompt(result);
+        outputView.printResult(result);
     }
 
     private void handleError(IllegalArgumentException e) {
