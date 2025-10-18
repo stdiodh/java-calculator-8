@@ -15,7 +15,7 @@ public class StringCalculator {
     }
 
     private String[] splitByDefaultSeparator(String text) {
-        return text.split("[,:]]");
+        return text.split("[,:]");
     }
 
     private String[] splitByCustomSeparator(String text) {
