@@ -1,9 +1,8 @@
 package calculator;
 
 import calculator.domain.Expression;
-import calculator.domain.Numbers;
 import calculator.domain.Tokenizer;
-import calculator.domain.Tokens;
+import calculator.service.CalculatorService;
 import calculator.view.InputView;
 import calculator.view.OutputView;
 
@@ -17,24 +16,18 @@ public class Application {
         OutputView outputView = new OutputView();
         InputView inputView = new InputView();
         Tokenizer tokenizer = new Tokenizer();
+        CalculatorService calculatorService = new CalculatorService(tokenizer);
 
         try {
             outputView.printInputPrompt();
             Expression userInput = new Expression(inputView.getUserInput());
 
-            int result = processCalculator(userInput, tokenizer);
+            int result = calculatorService.calculate(userInput);
 
             outputView.printResult(result);
         } catch (IllegalArgumentException e) {
             handleError(e, outputView);
         }
-    }
-
-    private int processCalculator(Expression userInput, Tokenizer tokenizer) {
-        Tokens parseInput = tokenizer.parse(userInput);
-        Numbers numbers = new Numbers(parseInput);
-
-        return numbers.sum();
     }
 
     private void handleError(IllegalArgumentException e, OutputView outputView) {
