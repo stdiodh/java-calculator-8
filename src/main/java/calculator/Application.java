@@ -14,29 +14,30 @@ public class Application {
     }
 
     public void run() {
-        try {
-            processCalculator();
-        } catch (IllegalArgumentException e) {
-            handleError(e);
-        }
-    }
-
-    private void processCalculator() {
         OutputView outputView = new OutputView();
         InputView inputView = new InputView();
         Tokenizer tokenizer = new Tokenizer();
 
-        outputView.printInputPrompt();
-        Expression userInput = new Expression(inputView.getUserInput());
+        try {
+            outputView.printInputPrompt();
+            Expression userInput = new Expression(inputView.getUserInput());
+
+            int result = processCalculator(userInput, tokenizer);
+
+            outputView.printResult(result);
+        } catch (IllegalArgumentException e) {
+            handleError(e, outputView);
+        }
+    }
+
+    private int processCalculator(Expression userInput, Tokenizer tokenizer) {
         Tokens parseInput = tokenizer.parse(userInput);
         Numbers numbers = new Numbers(parseInput);
 
-        int result = numbers.sum();
-        outputView.printResult(result);
+        return numbers.sum();
     }
 
-    private void handleError(IllegalArgumentException e) {
-        OutputView outputView = new OutputView();
+    private void handleError(IllegalArgumentException e, OutputView outputView) {
         outputView.printError(e);
     }
 }
