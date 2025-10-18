@@ -1,6 +1,6 @@
 package calculator.domain;
 
-public class StringCalculator {
+public class Tokenizer {
     public Tokens parse(Expression expression) {
         String text = expression.getValue();
         if (text == null || text.isEmpty()) {
