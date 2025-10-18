@@ -12,8 +12,8 @@ public class Numbers {
     }
 
     private int[] toInts(Tokens tokens) {
+        String[] stringTokens = tokens.getValues();
         int length = tokens.length();
-        String[] stringTokens = tokens.stream().toArray(String[]::new);
 
         int[] numbers = new int[length];
         try {

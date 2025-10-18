@@ -1,8 +1,5 @@
 package calculator.domain;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
-
 public class Tokens {
     private final String[] values;
 
@@ -10,8 +7,8 @@ public class Tokens {
         this.values = values;
     }
 
-    public Stream<String> stream() {
-        return Arrays.stream(values);
+    public String[] getValues() {
+        return values.clone();
     }
 
     public int length() {
