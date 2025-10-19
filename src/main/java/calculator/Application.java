@@ -18,19 +18,11 @@ public class Application {
         Tokenizer tokenizer = new Tokenizer();
         CalculatorService calculatorService = new CalculatorService(tokenizer);
 
-        try {
-            outputView.printInputPrompt();
-            Expression userInput = new Expression(inputView.getUserInput());
+        outputView.printInputPrompt();
+        Expression userInput = new Expression(inputView.getUserInput());
 
-            int result = calculatorService.calculate(userInput);
+        int result = calculatorService.calculate(userInput);
 
-            outputView.printResult(result);
-        } catch (IllegalArgumentException e) {
-            handleError(e, outputView);
-        }
-    }
-
-    private void handleError(IllegalArgumentException e, OutputView outputView) {
-        outputView.printError(e);
+        outputView.printResult(result);
     }
 }
