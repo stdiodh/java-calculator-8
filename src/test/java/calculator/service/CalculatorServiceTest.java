@@ -70,7 +70,7 @@ public class CalculatorServiceTest {
 
     @Test
     @DisplayName("숫자가 아닌 값이 포함된 경우 IllegalArgumentException을 던진다")
-    void test_not_a_number_exception() {
+    void testNotANumberException() {
         Expression expression = new Expression("1,a,3");
         String expectedMessage = "숫자가 아닌 값이 포함되어 있습니다.";
 
@@ -82,7 +82,7 @@ public class CalculatorServiceTest {
 
     @Test
     @DisplayName("음수가 포함된 경우 IllegalArgumentException을 던진다")
-    void test_negative_number_exception() {
+    void testNegativeNumberException() {
         Expression expression = new Expression("-1:2,3");
         String expectedMessage = "음수는 포함될 수 없습니다.";
 
